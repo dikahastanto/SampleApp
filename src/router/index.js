@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { Notify } from 'quasar'
 import routes from './routes'
-
+import { LocalStorage, Notify } from 'quasar'
 Vue.use(VueRouter)
 
 /*
@@ -14,15 +13,6 @@ Vue.use(VueRouter)
  * with the Router instance.
  */
 
-Vue.prototype.$show = (msg, color) => {
-  Notify.create({
-    message: msg,
-    color: color,
-    timeout: 2000,
-    actions: [{ icon: 'close', color: 'white' }]
-  })
-}
-
 export default function (/* { store, ssrContext } */) {
   const Router = new VueRouter({
     scrollBehavior: () => ({ x: 0, y: 0 }),
@@ -33,6 +23,26 @@ export default function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     mode: process.env.VUE_ROUTER_MODE,
     base: process.env.VUE_ROUTER_BASE
+  })
+
+  Router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiredLogin)) {
+      if (LocalStorage.getItem('datauser') === null || LocalStorage.getItem('datauser') === 'undefined') {
+        next({
+          name: 'login'
+        })
+        Notify.create({
+          icon: 'ion-close',
+          color: 'negative',
+          message: 'Anda Belum Login',
+          actions: [{ icon: 'close', color: 'white' }]
+        })
+      } else {
+        next()
+      }
+    } else {
+      next()
+    }
   })
 
   return Router

@@ -44,11 +44,16 @@ export default {
   methods: {
     login () {
       try {
-        this.$axios.post('login', {
+        this.$axios.post('loginpetani', {
           nik: this.nik,
           password: this.password
         }).then(res => {
-          console.log(res)
+          if (!res.data.sukses) {
+            this.$show(res.data.msg, 'negative')
+          } else {
+            this.$q.localStorage.set('datauser', res.data.user)
+            this.$router.push({ name: 'home' })
+          }
         })
       } catch (error) {
         this.$show('Terjadi Kesalahan', 'negative')

@@ -4,15 +4,18 @@ const routes = [
     path: '/login',
     component: () => import('layouts/LoginLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Login.vue') }
+      { path: '', name: 'login', component: () => import('pages/Login.vue') }
     ]
   },
   {
-    path: '/',
+    path: '/petani/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/petani/Index.vue') }
-    ]
+      { path: '', name: 'home', component: () => import('pages/petani/Index.vue') }
+    ],
+    meta: {
+      requiredLogin: true
+    }
   },
   {
     path: '',

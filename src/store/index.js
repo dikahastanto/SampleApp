@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import { Notify } from 'quasar'
 // import example from './module-example'
 
 Vue.use(Vuex)
@@ -13,6 +13,15 @@ Vue.use(Vuex)
  * async/await or return a Promise which resolves
  * with the Store instance.
  */
+
+Vue.prototype.$show = (msg, color) => {
+  Notify.create({
+    message: msg,
+    color: color,
+    timeout: 2000,
+    actions: [{ icon: 'close', color: 'white' }]
+  })
+}
 
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
