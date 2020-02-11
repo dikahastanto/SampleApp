@@ -8,7 +8,7 @@ const routes = [
     ]
   },
   {
-    path: '/petani/',
+    path: '/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
       { path: '', name: 'home', component: () => import('pages/petani/Index.vue') },
