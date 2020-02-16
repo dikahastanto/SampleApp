@@ -13,7 +13,7 @@
         />
 
         <q-toolbar-title class="text-dark">
-          Input RUT
+          {{ $route.name }}
         </q-toolbar-title>
       </q-toolbar>
     </q-header>

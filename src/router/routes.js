@@ -11,8 +11,19 @@ const routes = [
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '', name: 'home', component: () => import('pages/petani/Index.vue') },
-      { path: 'inputrut', name: 'inputRut', component: () => import('pages/petani/InputRdkk.vue') }
+      { path: '', name: 'home', component: () => import('pages/petani/Index.vue') }
+    ],
+    meta: {
+      requiredLogin: true
+    }
+  },
+  {
+    path: '/',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: 'inputrut', name: 'Input Rut', component: () => import('pages/petani/InputRdkk.vue') },
+      { path: 'tampilrdkk', name: 'Tampil RDKK', component: () => import('pages/petani/tampilRdkk.vue') },
+      { path: 'hasilpanen', name: 'Hasil Panen', component: () => import('pages/petani/hasilPanen.vue') }
     ],
     meta: {
       requiredLogin: true

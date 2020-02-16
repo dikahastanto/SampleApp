@@ -13,42 +13,42 @@
       <q-btn no-caps rounded unelevated color="accent">Profile Petani</q-btn>
     </div>
     <div class="row justify-center q-pb-lg q-pt-md" >
-      <div class="col-xs-6 q-pa-md" @click="$router.push({ name: 'inputRut' })">
+      <div class="col-xs-6 q-pa-md" @click="$router.push({ name: 'Input Rut' })">
         <div style="background-color: white;padding-top: 10px;padding-bottom: 10px;">
           <q-card-section>
             <div class="row items-center justify-center">
-              <img width="40%" src="statics/inputrut.png">
-              <div class="q-pl-md">Input RUT</div>
+              <center><img width="40%" src="statics/inputrut.png"></center>
+              <center><div class="q-pl-md">Input RUT</div></center>
             </div>
           </q-card-section>
         </div>
       </div>
-      <div class="col-xs-6 q-pa-md">
+      <div class="col-xs-6 q-pa-md" @click="$router.push({ name: 'Tampil RDKK' })">
         <div style="background-color: white;padding-top: 10px;padding-bottom: 10px;">
           <q-card-section>
-            <div class="row items-center justify-center">
-              <img width="40%" src="statics/inputrut.png">
-              <div class="q-pl-md">safd</div>
+            <div class=" items-center justify-center">
+            <center> <img width="40%" src="statics/pupuk.png"></center>
+            <center><div class="q-pl-md">RDKK</div></center>
             </div>
           </q-card-section>
         </div>
       </div>
-      <div class="col-xs-6 q-pa-md">
+      <div class="col-xs-6 q-pa-md" @click="$router.push({ name: 'Hasil Panen' })">
         <div style="background-color: white;padding-top: 10px;padding-bottom: 10px;">
           <q-card-section>
             <div class="row items-center justify-center">
-              <img width="40%" src="statics/inputrut.png">
-              <div class="q-pl-md">safd</div>
+              <center><img width="40%" src="statics/panen.png"></center>
+              <center><div class="q-pl-md">Hasil Panen</div></center>
             </div>
           </q-card-section>
         </div>
       </div>
-      <div class="col-xs-6 q-pa-md">
+      <div class="col-xs-6 q-pa-md" @click="logout">
         <div style="background-color: white;padding-top: 10px;padding-bottom: 10px;">
           <q-card-section>
             <div class="row items-center justify-center">
-              <img width="40%" src="statics/inputrut.png">
-              <div class="q-pl-md">safd</div>
+              <center><img width="40%" src="statics/exit.png"></center>
+              <center><div class="q-pl-md">Log Out</div></center>
             </div>
           </q-card-section>
         </div>
@@ -56,3 +56,13 @@
     </div>
   </q-page>
 </template>
+<script>
+export default {
+  methods: {
+    logout () {
+      this.$q.localStorage.clear()
+      this.$router.push({ name: 'login' })
+    }
+  }
+}
+</script>
